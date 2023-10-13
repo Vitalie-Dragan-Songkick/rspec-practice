@@ -2,12 +2,18 @@ require './concert'
 
 describe 'Concert' do
 
-  let(:valid_concert)   { Concert.new(['artist1',  'artist2'], 100, '2023/11/11', 'concert') }
-  let(:invalid_concert) { Concert.new([], 100, '2023/11/11', 'sdagasgd') }
+  let(:valid_concert)   { Concert.new(['artist1',  'artist2'], 100, '2024/11/11', 'concert') }
+  let(:invalid_concert) { Concert.new([], 100, '2023/01/01', 'jkhvkjh') }
   
   let(:concert)    { Concert.new(['ab', 'ac', 'ad', 'bcd'], 100, '2023/11/11', 'concert') }
   let(:livestream) { Concert.new(['ab', 'ac', 'ad', 'bcd'], 100, '2023/11/11', 'livestream') }
   let(:festival)   { Concert.new(['ab', 'ac', 'ad', 'bcd'], 100, '2023/11/11', 'festival') }
+
+  # let(:valid_date)   { Concert.new(['artist1',  'artist2'], 100, Date.today + 1, 'concert') }
+  # let(:invalid_date) { Concert.new(['artist1',  'artist2'], 100, Date.today - 1, 'concert') }
+  let(:valid_date)   { Concert.new(['artist1',  'artist2'], 100, (Date.today + 1).to_s, 'concert') }
+  let(:invalid_date) { Concert.new(['artist1',  'artist2'], 100, (Date.today - 1).to_s, 'concert') }
+  
 
 
 
@@ -108,7 +114,22 @@ describe 'Concert' do
   end
 
   # satrt date
-  
+  describe '#date_in_future?' do
+    context 'when start date is in the future' do
+      it 'returns a date in future' do
+        today = Date.today
+        future_date = today + 1
+        expect(valid_date.date_in_future?).to eq(true)
+      end
+    end
+    context 'when start date is in the past' do
+      it 'returns a date in future' do
+        today = Date.today
+        past_date = today - 1 
+        expect(invalid_date.date_in_future?).to eq(false)
+      end
+    end
+  end
 
   
 end

@@ -7,7 +7,7 @@ class Concert
   def initialize(artists,attendees,start_date, type)
     @artists   = artists
     @attendees = attendees
-    @start_date = start_date
+    @start_date = Date.parse(start_date)
     @type = type
   end
 
@@ -48,6 +48,12 @@ class Concert
     end
   end
 
+  # def date_in_future?
+  #   @start_date > Date.today
+  # end
+  def date_in_future?
+    @start_date.to_time.to_i > Date.today.to_time.to_i
+  end
   
 
 
