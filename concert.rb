@@ -37,7 +37,7 @@ class Concert
   end
 
   def type_is_valid
-    return VALID_TYPES.include?(@type)
+    return VALID_TYPES.include?(type)
   end
   
   def headliners

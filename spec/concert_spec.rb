@@ -3,7 +3,7 @@ require './concert'
 describe 'Concert' do
 
   let(:valid_concert)   { Concert.new(['artist1',  'artist2'], 100, '2024/11/11', 'concert') }
-  let(:invalid_concert) { Concert.new([], 100, '2023/01/01', 'jkhvkjh') }
+  let(:invalid_concert) { Concert.new([], 100, '2023/01/01', 'concert') }
   
   let(:concert)    { Concert.new(['ab', 'ac', 'ad', 'bcd'], 100, '2023/11/11', 'concert') }
   let(:livestream) { Concert.new(['ab', 'ac', 'ad', 'bcd'], 100, '2023/11/11', 'livestream') }
